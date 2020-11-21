@@ -121,7 +121,7 @@ export default function IndexPage() {
     setBruttoInput(e.target.value);
     const numericValue = parseFloat(e.target.value.replace(/,/, '.'));
     if (!Number.isNaN(numericValue)) {
-      setBruttoTab((prev) => ({ ...prev, [tab]: numericValue }));
+      setBruttoTab((prev) => ({ ...prev, [tab]: Math.max(numericValue, 0) }));
     } else {
       setBruttoTab(initialBrutto);
     }
