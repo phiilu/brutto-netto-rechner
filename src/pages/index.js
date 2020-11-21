@@ -113,10 +113,6 @@ export default function IndexPage() {
     netto
   } = useNetto(brutto);
 
-  function handleSelectTab(newTab) {
-    setTab(newTab);
-  }
-
   function handleBruttoChange(e) {
     setBruttoInput(e.target.value);
     const numericValue = parseFloat(e.target.value.replace(/,/, '.'));
@@ -129,9 +125,9 @@ export default function IndexPage() {
 
   return (
     <main>
-      <article className="container pt-16 pb-8 mx-auto space-y-8">
+      <article className="container px-4 py-8 pb-8 mx-auto space-y-8 md:pt-16">
         <SectionHeading title="Brutto-Netto" highlight="Rechner">
-          Berechne dein Netto Gehalt in 2 Sekunden
+          Instant Gehalt berechnen
         </SectionHeading>
 
         <section className="max-w-md mx-auto space-y-8">
@@ -141,17 +137,20 @@ export default function IndexPage() {
                 Select a tab
               </label>
               <select
+                value={tab}
+                onChange={(e) => setTab(e.target.value)}
+                onBlur={(e) => setTab(e.target.value)}
                 id="tabs"
                 className="block w-full border-gray-300 rounded-md focus:ring-indigo-500 focus:border-green-500">
-                <option>Monat</option>
-                <option>Jahr</option>
+                <option value="monthly">Monat</option>
+                <option value="yearly">Jahr</option>
               </select>
             </div>
             <div className="hidden sm:block">
               <div className="border-b border-gray-200">
                 <nav className="flex -mb-px" aria-label="Tabs">
                   <button
-                    onClick={() => handleSelectTab('monthly')}
+                    onClick={() => setTab('monthly')}
                     className={classNames(
                       'w-2/4 px-1 py-4 text-sm font-medium text-center border-b-2 focus:outline-none',
                       {
@@ -164,7 +163,7 @@ export default function IndexPage() {
                     Monat
                   </button>
                   <button
-                    onClick={() => handleSelectTab('yearly')}
+                    onClick={() => setTab('yearly')}
                     className={classNames(
                       'w-2/4 px-1 py-4 text-sm font-medium text-center border-b-2 focus:outline-none',
                       {
