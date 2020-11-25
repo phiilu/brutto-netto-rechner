@@ -17,7 +17,11 @@ function BruttoInputSimple({ value, onChange, period }) {
   return (
     <form>
       <div>
-        <label htmlFor="brutto" className="block text-sm font-medium text-gray-700">
+        <label
+          key="bruttoSimpleLabel"
+          id="bruttoSimpleLabel"
+          htmlFor="bruttoSimple"
+          className="block text-sm font-medium text-gray-700">
           Brutto Gehalt im {period === 'monthly' ? 'Monat' : 'Jahr'}
         </label>
         <div className="relative mt-1 rounded-md shadow-sm">
@@ -26,7 +30,7 @@ function BruttoInputSimple({ value, onChange, period }) {
           </div>
           <input
             type="text"
-            id="brutto"
+            id="bruttoSimple"
             className="block w-full pr-12 border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500 pl-7 sm:text-sm"
             placeholder="0,00"
             aria-describedby="brutto-currency"
@@ -50,7 +54,7 @@ function BruttoInputBig({ value, onChange, period }) {
     <form>
       <div>
         <input
-          id="brutto"
+          id="bruttoBig"
           type="text"
           className="w-full text-center bg-gray-100 border-none rounded-lg text-7xl focus:ring-2 focus:ring-green-700"
           name="brutto"
@@ -60,7 +64,9 @@ function BruttoInputBig({ value, onChange, period }) {
           autoComplete="off"
         />
         <label
-          htmlFor="brutto"
+          key="bruttoBigLabel"
+          id="bruttoBigLabel"
+          htmlFor="bruttoBig"
           className="block mt-2 text-sm font-medium text-center text-gray-700">
           Brutto Gehalt im {period === 'monthly' ? 'Monat' : 'Jahr'}
         </label>
@@ -180,9 +186,19 @@ export default function IndexPage() {
           </div>
 
           {aB === 1 ? (
-            <BruttoInputSimple value={bruttoInput} onChange={handleBruttoChange} period={period} />
+            <BruttoInputSimple
+              key="inputSimple"
+              value={bruttoInput}
+              onChange={handleBruttoChange}
+              period={period}
+            />
           ) : (
-            <BruttoInputBig value={bruttoInput} onChange={handleBruttoChange} period={period} />
+            <BruttoInputBig
+              key="inputBig"
+              value={bruttoInput}
+              onChange={handleBruttoChange}
+              period={period}
+            />
           )}
         </section>
 
