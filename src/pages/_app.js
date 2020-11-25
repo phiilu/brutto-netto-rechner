@@ -1,15 +1,12 @@
 import Layout from '@components/Layout';
+import Scripts from '@components/Scripts';
 import '../styles/index.css';
 
 function MyApp({ Component, pageProps }) {
   return (
     <Layout>
       <Component {...pageProps} />
-      <script
-        async
-        defer
-        data-domain="bruttonetto.phiilu.com"
-        src="https://p.phiilu.com/js/plausible.js"></script>
+      <Scripts />
     </Layout>
   );
 }
