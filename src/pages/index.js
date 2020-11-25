@@ -32,7 +32,7 @@ function BruttoInputSimple({ value, onChange, period }) {
             type="text"
             id="bruttoSimple"
             className="block w-full pr-12 border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500 pl-7 sm:text-sm"
-            placeholder="0,00"
+            placeholder={period === 'monthly' ? '2.000' : '28.000'}
             aria-describedby="brutto-currency"
             name="brutto"
             value={value}
@@ -58,7 +58,7 @@ function BruttoInputBig({ value, onChange, period }) {
           type="text"
           className="w-full text-center bg-gray-100 border-none rounded-lg text-7xl focus:ring-2 focus:ring-green-700"
           name="brutto"
-          placeholder="2.000"
+          placeholder={period === 'monthly' ? '2.000' : '28.000'}
           value={value}
           onChange={onChange}
           autoComplete="off"
